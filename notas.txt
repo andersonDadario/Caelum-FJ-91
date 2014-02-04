@@ -44,3 +44,25 @@ Php		\
 Python		| --> bytecode | invocation dynamique
 Scala		/
 Etc	       /
+
+
+Just In Time (JIT)
+Hotspot (quente)
+	client --> 1500 evocações
+	server --> 10000 evocações
+
+
+java no modo client (default p/ 32 bits)
+	> inicia rápido
+	> inicia com pouca performance
+	> recomendado para aplicações pequenas
+	> ganho a curto prazo
+
+java no modo server (default p/64 bits)
+	> inicia devagar
+	> iniciar com alta performance
+	> recomendado para aplicações grandes
+	> ganho a longo prazo
+
+java -Xint
+	> remove JIT
