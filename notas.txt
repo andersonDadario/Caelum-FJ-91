@@ -1,0 +1,46 @@
+- Requisitos não funcionais
+	- Assumir
+	- Desafiar
+- Definir Arquitetura
+	- Extender
+	- Criar
+- Escolher Tecnologias
+	- Usar a atual
+	- Avaliar
+- Avaliar Arquiteturas
+	- Funciona!
+	- Provar/Justificar
+- Colaboração
+	- Documentar
+	- Colaborar
+- Big Picture
+	- Conhecer
+	- Vender
+- Liderança
+	- Receber
+	- Assumir Responsabilidade
+- Coaching/Mentoring
+	- Receber
+	- Ensinar
+- Qualidade
+	- Revisar
+	- Esforçar
+- Design, Desenvolvimento e Testes
+	- Veja
+	- Envolva
+
+
+
+
+=============================================================
+- Especificação JVM
+- Auditoria de especificações pela Oracle
+
+- Java Community Process (JCP.org)
+
+
+Ruby	       \
+Php		\
+Python		| --> bytecode | invocation dynamique
+Scala		/
+Etc	       /
