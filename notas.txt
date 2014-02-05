@@ -48,8 +48,39 @@ Etc	       /
 
 Just In Time (JIT)
 Hotspot (quente)
-	client --> 1500 evocações
-	server --> 10000 evocações
+	-client
+		1500 evocações
+		-XX:+UseSerialGC
+	-server
+		10000 evocações
+		-XX:+UseParallelGC
+
+	
+	-XX:+UseAdaptativeSizePolicy
+		~ A logo prazo resolve
+		~ senão os seguintes parâmetros devem ser utilizados:
+			-XX:NewSize=80M
+			-XX:NewRatio=3
+
+	-XX:+UseConcurrentMarkSweepGC
+		~ Demora mais tempo
+		~ Permite que a aplicação responda mais rápido
+		~ Abre nova thread
+		~ Só para quando for necessário mover os ponteiros
+
+	-XX:+UseParallelOldGC
+		~ Não roda serial no Old
+
+	-XX:+UseG1GC
+	-XX:+UnlocExperimentalOptions
+		} casos muito específicos
+		} divide HEAP em diversos blocos
+			} todo bloco novo é "YOUNG"
+			} GC roda em blocos aleatórios
+			} Muda estado do bloco
+			} Agrupa blocos por estado
+
+	$ java -XX:CompileThreshold=300
 
 
 java no modo client (default p/ 32 bits)
@@ -66,3 +97,97 @@ java no modo server (default p/64 bits)
 
 java -Xint
 	> remove JIT
+
+java -XX:+PrintCompilation
+	> mostra detalhes da compilação/otimização
+
+=============================================================
+
+Memória
+Teoria das Gerações
+
+>> 92-98% dos objetos morrem cedo
+
+	young (1/3)
+	/
+Heap ---
+	\
+	old (2/3)
+
+	[ -XX:NewRatio=3 ]
+
+> copia o que sobrevive p/ old
+> modificar os ponteiros
+> limpa bloco inteiro "young"
+
+>> é possível configurar a % para Young e a % para Old (-XX:NewSize=80m)
+>> quando encher o old, o Garbage Collector aparece (Full GC - 3x + lento)
+>> system.gc() sugere que é uma boa hora de aparecer o GC
+	[ -XX:+DisableExplicityGC ]
+
+java -verbose:gc EstressaGC
+GC|FullGC	Antes -> Depois (Total) Tempo
+
+
+java -Xms500M >> valor inicial
+java -Xmx100G >> valor maximo
+
+[ -X  = pertence a todas as JVMs ]
+[ -XX = pertence apenas à JVM da Oracle ]
+
+=============================================================
+Profiling
+
+JProfiler > 30 dias grátis
+VisualVM (jvisualvm)
+	> Tools > Plugins > Visual GC
+
+
+[ YOUNG ]
+	Lv1: Eden
+	Lv2: S0
+	Lv3: S1
+	Lv4 --> OLD
+
+
+>> OLD cheio = OutOfMemoryError
+
+=============================================================
+
+Perm
+	Armazenamento permanente, por ex: classes (.class)
+
+Classloader
+				} Bootstrap CL ----> rt.jar (runtime)
+				}	^
+				}	|
+				} Extension CL ----> lib/ext (opt java)
+				}	^
+				}	|
+	java -cp		} Application CL --> classpath
+	classes utilizadas	}	^ 
+				}	|
+				} Standard CL -----> Servlet/JSP/EL
+				}	|
+				} 	|
+				} ---------------
+				} |		|
+				} v		v
+				  [[  WEB APP  ]]
+
+
+	-D ==> propriedades p/ VM
+	_Djava.endorsed.dirs=/libesp
+		> maior prioridade
+
+	[ JAR Hell ]
+	[ Carrega conforme buildpath se 2 JARs tiverem a mesma classe ]
+
+	[ Compilação: busca bibliotecas de baixo para cima ]
+	[ Execução: busca bibliotecas de cima para baixo   ]
+
+
+	classloader-web
+		> remover getHeaders()
+		> atualizar Tomcat de 6 p/ 7
+		> alterar ordem dos classloaders

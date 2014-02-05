@@ -1,0 +1,48 @@
+https://gist.github.com/mariofts/6644358
+
+#Conceitos sobre arquitetura
+http://randomactsofarchitecture.com/2012/11/20/should-software-architects-write-code/
+http://www.infoq.com/articles/brown-are-you-a-software-architect
+http://www.joelonsoftware.com/items/2006/09/01.html
+
+#Apresentação do Twitter sobre otimizações da JVM
+http://www.slideshare.net/aszegedi/everything-i-ever-learned-about-jvm-performance-tuning-twitter
+
+#Recomendações de livros
+http://pinterest.com/while42/pragmatic-programmer/
+
+#Tuning de JVM
+http://randomlyrr.blogspot.co.uk/2012/03/java-tuning-in-nutshell-part-1.html
+http://blog.joda.org/2011/08/printcompilation-jvm-flag.html
+http://stackoverflow.com/questions/1518213/read-java-jvm-startup-parameters-eg-xmx
+
+#Jit
+Charles Nutter sobre JIT: http://www.youtube.com/watch?v=0Yud4Q2HEz4
+
+#GC
+http://insightfullogic.com/blog/2013/feb/20/garbage-collection-java-1/
+http://insightfullogic.com/blog/2013/mar/6/garbage-collection-java-2/
+http://insightfullogic.com/blog/2013/may/7/garbage-collection-java-3/
+http://www.insightfullogic.com/blog/2013/jun/24/garbage-collection-java-4/
+https://blogs.oracle.com/jonthecollector/entry/our_collectors
+http://www.oracle.com/technetwork/java/javase/tech/g1-intro-jsp-135488.html
+http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html
+
+#java 8
+http://www.techempower.com/blog/2013/03/26/everything-about-java-8/
+
+#design
+http://martinfowler.com/bliki/AnemicDomainModel.html
+http://blog.fragmental.com.br/2010/01/18/domain-driven-bolovo-passando-conhecimento-e-etc/
+http://fragmental.com.br/wiki/index.php/Evitando_VOs_e_BOs.html
+
+
+#segurança
+http://google-gruyere.appspot.com/
+http://code.google.com/p/webgoat/
+
+#Apresentação sobre nosql:
+https://www.youtube.com/watch?v=qI_g07C_Q5I
+
+#migrations em java
+http://www.slideshare.net/rponte/migrations-for-java-qconsp2013
