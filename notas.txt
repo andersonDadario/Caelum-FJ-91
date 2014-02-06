@@ -238,6 +238,41 @@ Encapsulamento
 	  - Layer {lógica}
 	  - Tier {física}
 
-	Objeto
-	  - atributos
-	  - comportamentos
+
+	-------------------------
+	| Objeto		|
+	|   - atributos		|
+	|   - comportamentos	|
+	-------------------------
+=============================================================
+Refactor
+
+
+	GoF - 1o capítulo: programe orientado à interfaces
+	DAO
+	  * Por que retornar lista se o objetivo é iterar? *
+	  * Retorne e Recaba o tipo mais genérico *
+
+	  - Iterable
+		- Collection
+			- List
+				- etc
+
+	  Collections.unmodifiedList(contas)
+	  - devolve lista com métodos modificados
+
+
+
+
+
+	Eclipse Classe --> Refactor --> Extract Interface
+	aplica (INTERFACE xpto)
+		xpto.METODO
+
+
+
+	Cuidado com herança
+	>> herde de classes estátveis
+	>> heder de classes projetadas para isso
+
+	[ Herança X Composição ]
