@@ -47,6 +47,8 @@ Etc	       /
 
 
 Just In Time (JIT)
+	~> depende do tamanho da classe
+
 Hotspot (quente)
 	-client
 		1500 evocações
@@ -173,7 +175,7 @@ Classloader
 				} ---------------
 				} |		|
 				} v		v
-				  [[  WEB APP  ]]
+				  [WEB APP]  	[WEB APP (Hot Deploy)]
 
 
 	-D ==> propriedades p/ VM
@@ -186,8 +188,56 @@ Classloader
 	[ Compilação: busca bibliotecas de baixo para cima ]
 	[ Execução: busca bibliotecas de cima para baixo   ]
 
+	[ Toda classe possui referência do seu classloader ]
+
 
 	classloader-web
 		> remover getHeaders()
 		> atualizar Tomcat de 6 p/ 7
 		> alterar ordem dos classloaders
+
+=============================================================
+Memory Leak
+~  por conta de hot deploy ~
+
+	-XX:PermSize=128m
+	-XX:MaxPermSize=512m
+
+	> PERM fica cheio porque recursos não foram liberados no Tomcat 6
+	> Caso MySQL
+
+	[Bootstrap] --> [Driver Manager]
+	 ^			|
+	 |			|
+	[Extension CL]		|
+	 ^			|
+	 |			|
+	[Standard CL]		|
+	 ^			|
+	 |			v
+	[Web App] -------> [Driver MySQL]
+
+	> cada novo hotdeploy mantém a referência ao driver MySQL
+	> e não apaga o antigo classloader
+=============================================================
+Encapsulamento
+
+	[ Tell, Don't Ask ]
+
+
+	getNomeCompleto() X toString()
+
+	Exception Checked X Unchecked
+		Checked		-> throws everywhere
+				-> impacta várias classes
+				-> vaza informações técnica
+		Unchecked	-> só trata quem precisa
+
+
+	Camada
+	  - Layer {lógica}
+	  - Tier {física}
+
+	Objeto
+	  - atributos
+	  - comportamentos
