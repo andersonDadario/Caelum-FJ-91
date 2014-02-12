@@ -281,3 +281,40 @@ Refactor
 	Flyweight >> substring(i,f)
 	Fluent Interface >> DSL (Livro Martin Fowler)
 	DDD >> Orientar à Domínio
+=============================================================
+CDI
+
+// faltei
+=============================================================
+Requisitos não funcionais
+
+Performance
+	-> o usuário quem dita o que é aceitável ou não
+	-> webpagetest.org
+	-> js antes do </body>
+	-> google closure
+	-> yahoo minifier
+	-> uglifier
+	-> js beautifier
+	-> grunt.js
+	-> gulp.js
+
+	-> Collections (Array List X HashSet)
+	-> for(...) { query(); }
+
+	-> Round Hobin
+		>> processamento
+		>> conexões
+		>> estado
+
+	-> Priorização
+		IP1 60%
+		IP2 30%
+		IP3 10%
+
+	-> Load Balancer
+		JSESSIONID < 10 = Node1
+		JSESSIONID >= 10 && JSESSIONID <= 20 = Node2
+		JSESSIONID > 20 = Node3
+
+	-> Terracotta mantém 1 instância de singleton entre JVMs
