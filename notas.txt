@@ -73,7 +73,7 @@ Hotspot (quente)
 	-XX:+UseParallelOldGC
 		~ Não roda serial no Old
 
-	-XX:+UseG1GC
+	-XX:+UseG1GC >> divide a memória existente
 	-XX:+UnlocExperimentalOptions
 		} casos muito específicos
 		} divide HEAP em diversos blocos
@@ -318,3 +318,19 @@ Performance
 		JSESSIONID > 20 = Node3
 
 	-> Terracotta mantém 1 instância de singleton entre JVMs
+
+
+
+	Threads
+		> Tomcat = default 32 thredas (1 p/ request)
+		>> Problema de bloquear cliente por I/O
+		>> Criação de Pool de Threads
+		>>>> I/O Assíncrono
+		>>>> Cai performance
+		>>>> [Grizly] [Glassfish]
+		>>>> [Play]
+		>>>> java.util.concurrent
+
+	Tests
+		>> ab -n 1000 -c 100 http://localhost/
+		>> siege 
