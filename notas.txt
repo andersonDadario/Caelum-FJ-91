@@ -333,4 +333,26 @@ Performance
 
 	Tests
 		>> ab -n 1000 -c 100 http://localhost/
-		>> siege 
+		>> siege
+		>> MetricMiner
+		>> CodeSherif
+
+
+Segurança
+	getParameter => hashSet => mesmo hashCode (Parameter Pollution)
+	Tomcat Valve
+	Converter (Text -> String)
+	<% c %> ao invés de expression language
+	mass assignment
+
+
+
+1) Performance
+2) Escalabilidade e Disponibilidade
+	> Atingir o requisito de Performance para múltiplos usuários
+3) Confiabilidade
+	> Ex: mobile app
+	> Atualização (patch)
+	> Mudança de configuração no S.O.
+4) Gerenciabilidade
+5) Segurança
